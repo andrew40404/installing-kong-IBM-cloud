@@ -3,27 +3,33 @@
 **Step 1 - provision Kubernetes Cluster**
 
 - Click the **Catalog** button on the top
+
 - Select **Service** from the **Catalog**
+
 - Search for **Kubernetes Service** and click on it
 
-  ![image-20210131234823285](/home/abhishek/snap/typora/33/.config/Typora/typora-user-images/image-20210131234823285.png)
-
--   -   -   -   -   -   -
+  ![kong_doc_html_46d1c04e26ba5eea](https://user-images.githubusercontent.com/5286796/106394187-4b013200-6421-11eb-92b7-6c825737765c.png)
 
 - You are now at the Kubernetes deployment page. You need to specify some details about the cluster
+
 - Choose a plan **standard** or **free** , the free plan only has one worker node and no subnet, to provision a standard cluster, you will need to upgrade your account to Pay-As-You-Go
+
 - To upgrade to a Pay-As-You-Go account, complete the following steps:
+
 - In the console, go to Manage > Account.
+
 - Select Account settings; and click Add credit card.
+
 - Enter your payment information, click Next, and submit your information
+
 - Choose **classic** or **VPC** , read the docs and choose the most suitable type for yourself
 
-![image-20210131234855349](/home/abhishek/snap/typora/33/.config/Typora/typora-user-images/image-20210131234855349.png)
+  ![kong_doc_html_4d3a968071544952](https://user-images.githubusercontent.com/5286796/106394203-62d8b600-6421-11eb-89d2-98dc1c439942.png)
 
 - Now choose your location settings,
 - Choose **Geography** (continent)
 
-![image-20210131234917163](/home/abhishek/snap/typora/33/.config/Typora/typora-user-images/image-20210131234917163.png)
+![kong_doc_html_72496e6b0b2c820d](https://user-images.githubusercontent.com/5286796/106394202-610ef280-6421-11eb-978f-04ac9b590083.png)
 
 -   Choose 	Single or Multizone, in single zone your data is only kept in on 	datacenter, on the
 
