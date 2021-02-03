@@ -15,7 +15,7 @@
 - Choose a plan **standard** or **free**. The free plan only has one worker node and no subnet. To provision a standard cluster, you will need to upgrade your account to Pay-As-You-Go
 
 
-To upgrade to a Pay-As-You-Go account, complete the following steps:
+  To upgrade to a Pay-As-You-Go account, complete the following steps:
 
 - In the console, go to Manage > Account.
 
@@ -32,7 +32,7 @@ To upgrade to a Pay-As-You-Go account, complete the following steps:
 
 ![kong_doc_html_72496e6b0b2c820d](https://user-images.githubusercontent.com/5286796/106394202-610ef280-6421-11eb-978f-04ac9b590083.png)
 
--   Choose 	Single or Multizone, in single zone, your data is only kept in on 	datacenter. on the other hand with Multizone, it is distributed to multiple zones, thus safer in an unforeseen zone failure
+- Choose 	Single or Multizone, in single zone, your data is only kept in on 	datacenter. on the other hand with Multizone, it is distributed to multiple zones, thus safer in an   unforeseen zone failure
 
 - If you wish to use Multizone please set up your account with VRF
 - If at your current location selection, there is no available Virtual LAN, a new VLAN will be created for you
