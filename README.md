@@ -55,7 +55,7 @@ To complete this tutorial, you should have an IBM Cloud account, if you do not h
 - If at your current location selection, there is no available Virtual LAN, a new VLAN will be created for you
 - Choose a Worker node setup or use the preselected one, set Worker node amount per zone
 - Choose **Master Service Endpoint**. In VRF-enabled accounts, you can choose private-only to make your master accessible on the private network or via VPN tunnel. Choose public-only to make your master publicly accessible. When you have a VRF-enabled account, your cluster is set up by default to use both private and public endpoints.
-   Give desired **tags** to your cluster, for more information visit tags
+  Give desired **tags** to your cluster, for more information visit tags
 - Click **create**
    • Wait for your cluster to be provisioned
    • Your cluster is ready for usage
