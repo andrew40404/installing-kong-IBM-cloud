@@ -1,11 +1,24 @@
-# Installing Kong on IBM Cloud
+This document will describe how to install Kong on IBM Cloud using Kubernetes services.
 
-**Step 1 - provision Kubernetes Cluster**
+### **Contents**
+
+1. Introduction
+2. Provision Kubernetes Cluster
+3. Deploy IBM Cloud Block-Storage Plugin
+4. Deploy Kong
+
+### **Introduction**
+
+To complete this tutorial, you should have an IBM Cloud account, if you do not have one, please [register/signup here](https://cloud.ibm.com/registration). For installing Kong, we have used the Kubernetes cluster, and used the IBM Cloud Block-Storage plugin for our persistent volume. Upon the completion of this tutorial, you would have the Kong up and running on the Kubernetes cluster.
+
+1. Provision the Kubernetes cluster, if you have already setup one, skip to step 2.
+2. Deploy the IBM Cloud Block-Storage Plugin to the created cluster, if you have already done this, skip to step 3.
+3. Deploy the Kong.
+
+**Step 1 - Provision Kubernetes Cluster**
 
 - Click the **Catalog** button on the top
-
 - Select **Service** from the **Catalog**
-
 - Search for **Kubernetes Service** and click on it
 
   ![kong_doc_html_46d1c04e26ba5eea](https://user-images.githubusercontent.com/5286796/106394187-4b013200-6421-11eb-92b7-6c825737765c.png)
