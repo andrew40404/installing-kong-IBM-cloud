@@ -1,51 +1,46 @@
 # Installing Kong on IBM Cloud
 
-**Step 1 - provision Kubernetes Cluster**
+## Step 1 - Provision Kubernetes Cluster
 
 - Click the **Catalog** button on the top
 
 - Select **Service** from the **Catalog**
-
 - Search for **Kubernetes Service** and click on it
 
-  ![kong_doc_html_46d1c04e26ba5eea](https://user-images.githubusercontent.com/5286796/106394187-4b013200-6421-11eb-92b7-6c825737765c.png)
+![kong_doc_html_46d1c04e26ba5eea](https://user-images.githubusercontent.com/5286796/106394187-4b013200-6421-11eb-92b7-6c825737765c.png)
 
 - You are now at the Kubernetes deployment page. You need to specify some details about the cluster
-
 - Choose a plan **standard** or **free**. The free plan only has one worker node and no subnet. To provision a standard cluster, you will need to upgrade your account to Pay-As-You-Go
 
-
-  To upgrade to a Pay-As-You-Go account, complete the following steps:
+To upgrade to a Pay-As-You-Go account, complete the following steps:
 
 - In the console, go to Manage > Account.
-
 - Select Account settings; and click Add credit card.
-
 - Enter your payment information, click Next, and submit your information
-
 - Choose **classic** or **VPC** , read the docs and choose the most suitable type for yourself
 
-  ![kong_doc_html_4d3a968071544952](https://user-images.githubusercontent.com/5286796/106394203-62d8b600-6421-11eb-89d2-98dc1c439942.png)
+![kong_doc_html_4d3a968071544952](https://user-images.githubusercontent.com/5286796/106394203-62d8b600-6421-11eb-89d2-98dc1c439942.png)
 
 - Now choose your location settings,
 - Choose **Geography** (continent)
 
 ![kong_doc_html_72496e6b0b2c820d](https://user-images.githubusercontent.com/5286796/106394202-610ef280-6421-11eb-978f-04ac9b590083.png)
 
-- Choose 	Single or Multizone, in single zone, your data is only kept in on 	datacenter. on the other hand with Multizone, it is distributed to multiple zones, thus safer in an   unforeseen zone failure
+- Choose Single or Multizone. 
+> In single zone, your data is only kept on the datacenter while on the other hand with Multizone, it is distributed to multiple zones, thus safer in an unforeseen zone failure
+>
+> If you wish to use Multizone, please set up your account with VRF
 
-- If you wish to use Multizone please set up your account with VRF
 - If at your current location selection, there is no available Virtual LAN, a new VLAN will be created for you
-- Choose a Worker node setup or use the preselected one. Set Worker node amount per zone
-- Choose **Master Service Endpoint**. In VRF-enabled accounts, you can choose private-only to make your master accessible on the private network or via VPN tunnel. Choose public-only to make your master publicly accessible. When you have a VRF-enabled account, your cluster is set up by default to use both private and public endpoints.
+- Choose a Worker node setup or use the preselected one. S et Worker node amount per zone
+- Choose **Master Service Endpoint**. 
 
-- Provide your desired **tags** to your cluster. for more information visit tags
-- Click **create**
-  * Wait for your cluster to be provisioned
-   * Your cluster should now be ready for usage
+> In VRF-enabled accounts, you can choose private-only to make your master accessible on the private network or via VPN tunnel. Choose public-only to make your master publicly accessible. When you have a VRF-enabled account, your cluster is set up by default to use both private and public endpoints.
+- Give desired **tags** to your cluster, click **create**
+- Wait for your cluster to be provisioned
+- Your cluster is ready for usage
 
-
-**Step 2 Deploy IBM Cloud Block Storage plug-in**
+## Step 2 Deploy IBM Cloud Block Storage plug-in
 
 The Block Storage plug-in is a persistent, high-performance iSCSI storage that you can add to your apps by using Kubernetes Persistent Volumes (PVs).
 
@@ -58,7 +53,7 @@ The Block Storage plug-in is a persistent, high-performance iSCSI storage that y
 - Click **install** and wait for the deployment
 
 
-**Step 3: Deploying Kong**
+## Step 3: Deploying Kong
 
 To deploy Kong onto your Kubernetes cluster with Helm, use:
 
@@ -73,33 +68,30 @@ $ helm install kong/kong
 $ helm install kong/kong --generate-name --set ingressController.installCRDs=false
 ```
 
-**Production configuration**
+### Production configuration
 
 This will have a `value-production.yaml` file with some parameters oriented to production configuration in comparison to the regular values.yaml can be find. You can use this file instead of the default file.
 
-
-**Enable exposing Prometheus metrics:**
+### Enable exposing Prometheus metrics:
 
 ```yaml
 - metrics.enabled: false 
 + metrics.enabled: true 
 ```
-
-**Enable Pod Disruption Budget:**
+### Enable Pod Disruption Budget:
 
 ```yaml
 - pdb.enabled: false
 + pdb.enabled: true
 ```
-
-**Increase number of replicas to 4:**
+### Increase number of replicas to 4:
 
 ```yaml
 - replicaCount: 2
 + replicaCount: 4
 ```
 
-**Database backend**
+### Database backend
 
 Deploy the PostgreSQL sub-chart (default)
 
@@ -140,7 +132,7 @@ helm install my-release bitnami-ibm/kong \
    --set cassandra.external.password=_PASSWORD_OF_YOUR_CASSANDRA_INSTALLATION_
 ```
 
-**Sidecars and Init Containers**
+### Sidecars and Init Containers
 
 If you have a need for additional containers to run within the same pod as Kong (e.g. an additional metrics or logging exporter), you can do so via the sidecars config parameter. Simply define your container according to the Kubernetes container spec.
 
@@ -167,8 +159,7 @@ initContainers:
 ​      containerPort: 1234
 ```
 
-
-**Adding extra environment variables**
+### Adding extra environment variables
 
 In case you want to add extra environment variables (useful for advanced operations like custom init scripts), you can use the kong.extraEnvVars property.
 
@@ -185,7 +176,7 @@ Alternatively, you can use a ConfigMap or a Secret with the environment variable
 
 The Kong Ingress Controller and the Kong Migration job also allow these kinds of configuration. the `ingressController.extraEnvVars`, `ingressController.extraEnvVarsCM`, `ingressController.extraEnvVarsSecret`, `migration.extraEnvVars`, `migration.extraEnvVarsCM` and `migration.extraEnvVarsSecret` values.
 
-**Using custom init scripts**
+### Using custom init scripts
 
 For advanced operations, the Bitnami Kong charts allows using custom init scripts that will be mounted in `/docker-entrypoint.init-db`. You can use a ConfigMap or a Secret (in case of sensitive data) for mounting these extra scripts. Then use the `kong.initScriptsCM` and `kong.initScriptsSecret` values.
 
@@ -196,7 +187,7 @@ initScriptsCM=special-scripts
 initScriptsSecret=special-scripts-sensitive
 ```
 
-**Deploying extra resources**
+### Deploying extra resources
 
 There are cases where you may want to deploy extra objects, such as KongPlugins, KongConsumers, amongst others. For covering this case, the chart allows adding the full specification of other objects using the extraDeploy parameter. The following example would activate a plugin at deployment time.
 
@@ -215,8 +206,7 @@ extraDeploy: |-
    plugin: correlation-id
 ```
 
-
-**Setting Pod's affinity**
+### Setting Pod's affinity 
 
 This chart allows you to set your custom affinity using the affinity parameter.
 
