@@ -31,7 +31,7 @@ To upgrade to a Pay-As-You-Go account, complete the following steps:
 > If you wish to use Multizone, please set up your account with VRF
 
 - If at your current location selection, there is no available Virtual LAN, a new VLAN will be created for you
-- Choose a Worker node setup or use the preselected one. S et Worker node amount per zone
+- Choose a Worker node setup or use the preselected one. Set Worker node amount per zone
 - Choose **Master Service Endpoint**. 
 
 > In VRF-enabled accounts, you can choose private-only to make your master accessible on the private network or via VPN tunnel. Choose public-only to make your master publicly accessible. When you have a VRF-enabled account, your cluster is set up by default to use both private and public endpoints.
