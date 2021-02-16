@@ -39,7 +39,7 @@ To upgrade to a Pay-As-You-Go account, complete the following steps:
 - Wait for your cluster to be provisioned
 - Your cluster is ready for usage
 
-## Step 2 Deploy IBM Cloud Block Storage plug-in
+## Step 2 - Deploy IBM Cloud Block Storage plug-in
 
 The Block Storage plug-in is a persistent, high-performance iSCSI storage that you can add to your apps by using Kubernetes Persistent Volumes (PVs).
 
@@ -52,7 +52,7 @@ The Block Storage plug-in is a persistent, high-performance iSCSI storage that y
 - Click **install** and wait for the deployment
 
 
-## Step 3: Deploying Kong
+## Step 3 - Deploying Kong
 
 To deploy Kong onto your Kubernetes cluster with Helm, use:
 
